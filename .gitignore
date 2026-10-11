@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# PyInstaller
+*.spec
+
+# Never commit real save files
+*.sav
+SP-Sav-*
+SP-Opt
+.nx_save_meta.bin
+PC saves/
+save_backup_*.zip
+user.ini
+steam_autocloud.vdf
+
+# OS
+.DS_Store
+Thumbs.db

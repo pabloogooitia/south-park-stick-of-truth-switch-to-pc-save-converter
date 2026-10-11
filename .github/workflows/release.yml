@@ -1,0 +1,31 @@
+name: Release
+
+# Push a tag like v1.0.0 to build the Windows executable and publish a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test
+        run: python -m unittest discover -s tests -v
+      - name: Build executable
+        run: |
+          python -m pip install pyinstaller==6.10.0
+          pyinstaller --onefile --console --name StickOfTruth-SaveConverter --paths . packaging/entry.py
+      - name: Smoke test
+        run: dist/StickOfTruth-SaveConverter.exe --version
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/StickOfTruth-SaveConverter.exe
+          body_path: .github/release-notes.md

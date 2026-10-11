@@ -1,0 +1,41 @@
+name: Conversion report
+description: Tell us whether converting your save worked (both successes and failures help)
+labels: ["report"]
+body:
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Works, no problems found so far
+        - Loads, but something is wrong in game
+        - Does not load / crashes
+        - The converter shows an error
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened?
+      description: What did you check in game? What was wrong? Error messages?
+    validations:
+      required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: Output of `info`
+      description: "Run `python -m sot_save_converter info <switch file> <converted .sav>` (or `StickOfTruth-SaveConverter.exe info …`) and paste the output."
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Game versions and languages
+      placeholder: "Switch (Spanish) → Steam, Windows 11 (Spanish)"
+  - type: input
+    id: tool
+    attributes:
+      label: Stick of Truth Save Converter version
+      placeholder: "1.0.0 (exe) / git commit"
+  - type: markdown
+    attributes:
+      value: "**Please don't attach save files here unless you are fine with them being public.**"

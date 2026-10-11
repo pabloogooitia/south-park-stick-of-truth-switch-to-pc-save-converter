@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "south-park-stick-of-truth-save-converter"
+description = "Convert South Park: The Stick of Truth (La Vara de la Verdad) saves from Nintendo Switch to PC (Steam)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dynamic = ["version"]
+keywords = ["south park", "stick of truth", "la vara de la verdad", "save", "switch", "steam", "converter", "save transfer"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Games/Entertainment",
+    "Topic :: Utilities",
+]
+
+[project.scripts]
+sot-save-converter = "sot_save_converter.cli:main"
+
+[tool.setuptools]
+packages = ["sot_save_converter"]
+
+[tool.setuptools.dynamic]
+version = { attr = "sot_save_converter.__version__" }
